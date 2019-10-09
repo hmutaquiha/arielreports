@@ -6,7 +6,7 @@ descrição
 -----------
 Este é um módulo muito básico que pode ser usado como ponto de partida na criação de um novo módulo.
 
-Construindo a partir da Fonte
+Compilando a partir da Fonte
 --------------------
 Você precisará ter o Java 1.6+ e o Maven 2.x + instalados. Use o comando 'mvn package' para
 compilar e empacotar o módulo. O arquivo estará na pasta omod / target.
@@ -20,7 +20,7 @@ Isso permitirá que você implante quaisquer alterações em sua web
 recursos como js ou arquivos sem reinstalar o módulo. O caminho de implantação diz
 onde o OpenMRS está implantado.
 
-instalação
+Instalação
 ------------
 1. Faça o build do módulo para produzir o ficheiro .omod
 2. Use a tela Administração do OpenMRS> Gerenciar módulos para fazer upload e instalar o ficheiro .omod
