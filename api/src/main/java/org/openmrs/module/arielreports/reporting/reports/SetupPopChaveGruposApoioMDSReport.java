@@ -16,11 +16,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetupInscritosReport extends ArielDataExportManager {
+public class SetupPopChaveGruposApoioMDSReport extends ArielDataExportManager {
 
   @Override
   public String getExcelDesignUuid() {
-    return "067e5600-f57b-11e9-b02b-9f21eeebadcf";
+    return "83b5275c-1803-11ea-b1c0-3b138d9321bf";
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SetupInscritosReport extends ArielDataExportManager {
       reportDesign =
           createXlsReportDesign(
               reportDefinition,
-              "ListaInscritos.xls",
-              "INSCRITOS SERVIÇO TARV",
+              "Lista_PC_GA_MDS.xls",
+              "POPCHAVE_GRUPOSAPOIO_MDS",
               getExcelDesignUuid(),
               null);
       Properties props = new Properties();
-      props.put("repeatingSections", "sheet:1,row:8,dataset:INSCRITOS");
+      props.put("repeatingSections", "sheet:1,row:8,dataset:PACIENTES");
       props.put("sortWeight", "5000");
       reportDesign.setProperties(props);
     } catch (IOException e) {
@@ -53,17 +53,17 @@ public class SetupInscritosReport extends ArielDataExportManager {
 
   @Override
   public String getUuid() {
-    return "0d8d20d4-f57b-11e9-b9bc-07a3d1bf0f0b";
+    return "8ddc85ea-1803-11ea-bc35-9384ce96e6eb";
   }
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE PACIENTES INSCRITOS NO SERVIÇO TARV (MASTER CARD)";
+    return "ARIEL - LISTA DE POPULACAO CHAVE, GRUPOS DE APOIO E MODELOS DIFERENCIADOS";
   }
 
   @Override
   public String getDescription() {
-    return "São pacientes inscritos no serviço TARV num período (inclui os inscritos após introdução de novos instrumentos)";
+    return "São pacientes que fazem parte de população chave, grupos de apoio e modelos diferenciados";
   }
 
   @Override
@@ -74,15 +74,15 @@ public class SetupInscritosReport extends ArielDataExportManager {
     rd.setDescription(getDescription());
     rd.setParameters(getParameters());
     rd.addDataSetDefinition(
-        "INSCRITOS",
+        "PACIENTES",
         Mapped.mapStraightThrough(
-            ArielReportsDataSets.getPacientesInscritosDataSet(getParameters())));
+            ArielReportsDataSets.getPopChaveGruposApoioMDSDataSet(getParameters())));
     return rd;
   }
 
   @Override
   public String getVersion() {
-    return "0.2";
+    return "0.1";
   }
 
   @Override

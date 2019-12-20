@@ -16,11 +16,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetupInscritosReport extends ArielDataExportManager {
+public class SetupElegiveisCargaViralReport extends ArielDataExportManager {
 
   @Override
   public String getExcelDesignUuid() {
-    return "067e5600-f57b-11e9-b02b-9f21eeebadcf";
+    return "e9cf5fc2-2243-11ea-b162-d336bbf947c8";
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SetupInscritosReport extends ArielDataExportManager {
       reportDesign =
           createXlsReportDesign(
               reportDefinition,
-              "ListaInscritos.xls",
-              "INSCRITOS SERVIÇO TARV",
+              "ListaElegiveisCargaViral.xls",
+              "ELEGIVEIS CARGA VIRAL",
               getExcelDesignUuid(),
               null);
       Properties props = new Properties();
-      props.put("repeatingSections", "sheet:1,row:8,dataset:INSCRITOS");
+      props.put("repeatingSections", "sheet:1,row:8,dataset:ELEGIVEIS");
       props.put("sortWeight", "5000");
       reportDesign.setProperties(props);
     } catch (IOException e) {
@@ -53,17 +53,17 @@ public class SetupInscritosReport extends ArielDataExportManager {
 
   @Override
   public String getUuid() {
-    return "0d8d20d4-f57b-11e9-b9bc-07a3d1bf0f0b";
+    return "ef59da12-2243-11ea-a8f4-ff0cacd1b3bb";
   }
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE PACIENTES INSCRITOS NO SERVIÇO TARV (MASTER CARD)";
+    return "ARIEL - LISTA DE PACIENTES ELEGIVEIS A CARGA VIRAL";
   }
 
   @Override
   public String getDescription() {
-    return "São pacientes inscritos no serviço TARV num período (inclui os inscritos após introdução de novos instrumentos)";
+    return "São pacientes elegíveis ao exame de Carga Viral";
   }
 
   @Override
@@ -74,15 +74,14 @@ public class SetupInscritosReport extends ArielDataExportManager {
     rd.setDescription(getDescription());
     rd.setParameters(getParameters());
     rd.addDataSetDefinition(
-        "INSCRITOS",
-        Mapped.mapStraightThrough(
-            ArielReportsDataSets.getPacientesInscritosDataSet(getParameters())));
+        "ELEGIVEIS",
+        Mapped.mapStraightThrough(ArielReportsDataSets.getElegiveisCargaViral(getParameters())));
     return rd;
   }
 
   @Override
   public String getVersion() {
-    return "0.2";
+    return "0.1";
   }
 
   @Override

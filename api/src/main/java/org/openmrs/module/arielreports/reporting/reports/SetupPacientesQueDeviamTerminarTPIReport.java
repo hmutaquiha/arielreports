@@ -16,11 +16,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetupInscritosReport extends ArielDataExportManager {
+public class SetupPacientesQueDeviamTerminarTPIReport extends ArielDataExportManager {
 
   @Override
   public String getExcelDesignUuid() {
-    return "067e5600-f57b-11e9-b02b-9f21eeebadcf";
+    return "4b1165cc-2236-11ea-9a51-e3f9b2c72a64";
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SetupInscritosReport extends ArielDataExportManager {
       reportDesign =
           createXlsReportDesign(
               reportDefinition,
-              "ListaInscritos.xls",
-              "INSCRITOS SERVIÇO TARV",
+              "ListaIniciosTPIQueDeviamTerminar.xls",
+              "TERMINO TPI",
               getExcelDesignUuid(),
               null);
       Properties props = new Properties();
-      props.put("repeatingSections", "sheet:1,row:8,dataset:INSCRITOS");
+      props.put("repeatingSections", "sheet:1,row:8,dataset:TERMINOTPI");
       props.put("sortWeight", "5000");
       reportDesign.setProperties(props);
     } catch (IOException e) {
@@ -53,17 +53,17 @@ public class SetupInscritosReport extends ArielDataExportManager {
 
   @Override
   public String getUuid() {
-    return "0d8d20d4-f57b-11e9-b9bc-07a3d1bf0f0b";
+    return "524fda1c-2236-11ea-ad6a-1f6cd5884dc4";
   }
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE PACIENTES INSCRITOS NO SERVIÇO TARV (MASTER CARD)";
+    return "ARIEL - LISTA DE PACIENTES QUE INICIARM TPI E DEVIAM TERMINAR";
   }
 
   @Override
   public String getDescription() {
-    return "São pacientes inscritos no serviço TARV num período (inclui os inscritos após introdução de novos instrumentos)";
+    return "São pacientes que iniciaram o Tratamento Profiláctico com Isoniazida há 6 meses e deviam terminar no período de reporte";
   }
 
   @Override
@@ -74,15 +74,15 @@ public class SetupInscritosReport extends ArielDataExportManager {
     rd.setDescription(getDescription());
     rd.setParameters(getParameters());
     rd.addDataSetDefinition(
-        "INSCRITOS",
+        "TERMINOTPI",
         Mapped.mapStraightThrough(
-            ArielReportsDataSets.getPacientesInscritosDataSet(getParameters())));
+            ArielReportsDataSets.getPacientesQueDeviamTerminarTPI(getParameters())));
     return rd;
   }
 
   @Override
   public String getVersion() {
-    return "0.2";
+    return "0.1";
   }
 
   @Override

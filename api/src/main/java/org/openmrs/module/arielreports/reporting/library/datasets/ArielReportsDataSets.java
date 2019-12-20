@@ -12,7 +12,7 @@ public class ArielReportsDataSets {
 
     SqlDataSetDefinition dsd = new SqlDataSetDefinition();
 
-    dsd.setName("GRAVIDAS");
+    dsd.setName("GRAVIDAS DE MAIS DE 9 MESES SEM DATA DE PARTO");
     dsd.setParameters(parameters);
     dsd.setSqlQuery(ReportQueries.GRAVIDAS);
 
@@ -23,7 +23,7 @@ public class ArielReportsDataSets {
 
     SqlDataSetDefinition dsd = new SqlDataSetDefinition();
 
-    dsd.setName("CARGA VIRAL");
+    dsd.setName("PACIENTES COM CARGA VIRAL NEGATIVA");
     dsd.setParameters(parameters);
     dsd.setSqlQuery(ReportQueries.PACIENTES_CV_NEGATIVA);
 
@@ -45,7 +45,7 @@ public class ArielReportsDataSets {
 
     SqlDataSetDefinition dsd = new SqlDataSetDefinition();
 
-    dsd.setName("COORTE");
+    dsd.setName("PACIENTES NA COORTE TARV");
     dsd.setParameters(parameters);
     dsd.setSqlQuery(ReportQueries.PACIENTES_COORTE_TARV);
 
@@ -57,9 +57,64 @@ public class ArielReportsDataSets {
 
     SqlDataSetDefinition dsd = new SqlDataSetDefinition();
 
-    dsd.setName("VISITAS");
+    dsd.setName("VISITAS QUE TIVERAM RASTREIOS OU PROFILAXIAS");
     dsd.setParameters(parameters);
     dsd.setSqlQuery(ReportQueries.VISITAS_RASTREIOS_PROFILAXIAS);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getSuspeitosFalenciaDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES COM SUSPEITA DE FALENCIA");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.SUSPEITOS_FALENCIA);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getPopChaveGruposApoioMDSDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("POLULACAO CHAVE OU GRUPOS DE APOIO OU EM MODELOS DIFERENCIADOS ");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.POP_CHAVE_GRUPOS_APOIO_MDS);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getElegiveisTPI(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES ELEGIVEIS A TPI");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.ELEGIVEIS_TPI);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getPacientesQueDeviamTerminarTPI(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES QUE DEVIAM TERMINAR TPI");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.PACIENTES_DEVIAM_TERMINAR_TPI);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getElegiveisCargaViral(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES ELEGIVEIS A CARGA VIRAL");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.ELEGIVEIS_CARGA_VIRAL);
 
     return dsd;
   }

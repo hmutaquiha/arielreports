@@ -82,7 +82,7 @@ public class SetupGravidasSemDataPartoReport extends ArielDataExportManager {
 
   @Override
   public String getVersion() {
-    return "0.1";
+    return "0.2";
   }
 
   @Override
