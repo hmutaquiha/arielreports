@@ -118,4 +118,37 @@ public class ArielReportsDataSets {
 
     return dsd;
   }
+
+  public static DataSetDefinition getPacientesQueVisitaramUS(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES QUE VISITARAM A US");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.PACIENTES_QUE_VISITARAM_US);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getMarcadosSeguimentoOuLevantamento(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES MARCADOS PARA SEGUIMENTO OU LEVANTAMENTO");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.MARCADOS_SEGUIMENTO_LEVANTAMENTO);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getReiniciosTARVDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES QUE REINICIARAM O TARV");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.REINICIOS_TARV);
+
+    return dsd;
+  }
 }
