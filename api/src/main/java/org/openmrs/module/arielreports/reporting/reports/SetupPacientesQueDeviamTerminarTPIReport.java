@@ -58,7 +58,7 @@ public class SetupPacientesQueDeviamTerminarTPIReport extends ArielDataExportMan
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE PACIENTES QUE INICIARM TPI E DEVIAM TERMINAR";
+    return "ARIEL - LISTA DE PACIENTES QUE INICIARAM TPI E DEVIAM TERMINAR";
   }
 
   @Override
