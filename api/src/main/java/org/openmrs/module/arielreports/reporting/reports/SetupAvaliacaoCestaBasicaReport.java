@@ -16,11 +16,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetupElegiveisTPIReport extends ArielDataExportManager {
+public class SetupAvaliacaoCestaBasicaReport extends ArielDataExportManager {
 
   @Override
   public String getExcelDesignUuid() {
-    return "a231aa9a-2229-11ea-ac5d-d307adafac6f";
+    return "56d200bc-70e0-11ea-ad0e-970287244e1c";
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SetupElegiveisTPIReport extends ArielDataExportManager {
       reportDesign =
           createXlsReportDesign(
               reportDefinition,
-              "ListaElegiveisTPI.xls",
-              "ELEGIVEIS TPI",
+              "AvaliacaoCestaBasica.xls",
+              "CESTA BASICA",
               getExcelDesignUuid(),
               null);
       Properties props = new Properties();
-      props.put("repeatingSections", "sheet:1,row:8,dataset:ELEGIVEIS");
+      props.put("repeatingSections", "sheet:1,row:8,dataset:CESTABASICA");
       props.put("sortWeight", "5000");
       reportDesign.setProperties(props);
     } catch (IOException e) {
@@ -53,17 +53,17 @@ public class SetupElegiveisTPIReport extends ArielDataExportManager {
 
   @Override
   public String getUuid() {
-    return "a8ee6206-2229-11ea-9ea0-9b1a42ff426c";
+    return "5cefc65a-70e0-11ea-aa7a-ab117d00f58a";
   }
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE PACIENTES ELEGIVEIS AO TPI";
+    return "ARIEL - AVALIAÇÃO CESTA BÁSICA";
   }
 
   @Override
   public String getDescription() {
-    return "São pacientes elegíveis ao Tratamento Profiláctico com Isoniazida";
+    return "São pacientes na cesta básica";
   }
 
   @Override
@@ -74,14 +74,15 @@ public class SetupElegiveisTPIReport extends ArielDataExportManager {
     rd.setDescription(getDescription());
     rd.setParameters(getParameters());
     rd.addDataSetDefinition(
-        "ELEGIVEIS",
-        Mapped.mapStraightThrough(ArielReportsDataSets.getElegiveisTPI(getParameters())));
+        "CESTABASICA",
+        Mapped.mapStraightThrough(
+            ArielReportsDataSets.getAvaliacaoCestaBasicaDataSet(getParameters())));
     return rd;
   }
 
   @Override
   public String getVersion() {
-    return "0.2";
+    return "0.1";
   }
 
   @Override

@@ -16,11 +16,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetupElegiveisTPIReport extends ArielDataExportManager {
+public class SetupCargaViralAcima1000Report extends ArielDataExportManager {
 
   @Override
   public String getExcelDesignUuid() {
-    return "a231aa9a-2229-11ea-ac5d-d307adafac6f";
+    return "3e4aa75a-7415-11ea-b8b8-4382454c228c";
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SetupElegiveisTPIReport extends ArielDataExportManager {
       reportDesign =
           createXlsReportDesign(
               reportDefinition,
-              "ListaElegiveisTPI.xls",
-              "ELEGIVEIS TPI",
+              "CargaViralAcima1000.xls",
+              "CARGA VIRAL",
               getExcelDesignUuid(),
               null);
       Properties props = new Properties();
-      props.put("repeatingSections", "sheet:1,row:8,dataset:ELEGIVEIS");
+      props.put("repeatingSections", "sheet:1,row:8,dataset:CARGAVIRAL");
       props.put("sortWeight", "5000");
       reportDesign.setProperties(props);
     } catch (IOException e) {
@@ -53,17 +53,17 @@ public class SetupElegiveisTPIReport extends ArielDataExportManager {
 
   @Override
   public String getUuid() {
-    return "a8ee6206-2229-11ea-9ea0-9b1a42ff426c";
+    return "44d7dde0-7415-11ea-b209-bb90d0df238e";
   }
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE PACIENTES ELEGIVEIS AO TPI";
+    return "ARIEL - LISTA DE PACIENTES COM CARGA VIRAL ACIMA DE 1000 CÓPIAS";
   }
 
   @Override
   public String getDescription() {
-    return "São pacientes elegíveis ao Tratamento Profiláctico com Isoniazida";
+    return "São pacientes com carga viral acima de 1000 cópias";
   }
 
   @Override
@@ -74,20 +74,20 @@ public class SetupElegiveisTPIReport extends ArielDataExportManager {
     rd.setDescription(getDescription());
     rd.setParameters(getParameters());
     rd.addDataSetDefinition(
-        "ELEGIVEIS",
-        Mapped.mapStraightThrough(ArielReportsDataSets.getElegiveisTPI(getParameters())));
+        "CARGAVIRAL",
+        Mapped.mapStraightThrough(
+            ArielReportsDataSets.getCargaViralAcima1000DataSet(getParameters())));
     return rd;
   }
 
   @Override
   public String getVersion() {
-    return "0.2";
+    return "0.1";
   }
 
   @Override
   public List<Parameter> getParameters() {
     return Arrays.asList(
-        new Parameter("startDate", "Data Inicial", Date.class),
         new Parameter("endDate", "Data Final", Date.class),
         new Parameter("location", "Unidade Sanitária", Location.class));
   }

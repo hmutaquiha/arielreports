@@ -151,4 +151,92 @@ public class ArielReportsDataSets {
 
     return dsd;
   }
+
+  public static DataSetDefinition getMudancaParaDTGDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES QUE MUDARAM DE REGIME PARA DTG");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.MUDARANCA_PARA_DTG);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getAvaliacaoCestaBasicaDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES NA CESTA BASICA");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.AVALIACAO_CESTA_BASICA);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getRastreiosIniciosTBDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES RASTREIADOS INICIADOS TB");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.RASTREIOS_INICIO_TB);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getFaltosParaBuscaDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES FALTOSOS PARA BUSCA");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.FALTOSOS_PARA_BUSCA);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getAtendidosConsultaDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES ATENDIDOS NA CONSULTA");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.ATENDIDOS_CONSULTAS);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getCargaViralAcima1000DataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES COM CARGA VIRAL ACIMA DE 1000 CÓPIAS");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.CARGA_VIRAL_ACIMA_1000);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getRevelacaoDiagnosticoDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES COM REVELAÇÃO DE DIAGNÓSTICO");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.REVELACAO_DIAGNOSTICO);
+
+    return dsd;
+  }
+
+  public static DataSetDefinition getMulheresViaDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("MULHERES COM E SEM VIA");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.MULHERES_VIA);
+
+    return dsd;
+  }
 }

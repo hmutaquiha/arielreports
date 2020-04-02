@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Properties;
 import org.openmrs.Location;
 import org.openmrs.module.arielreports.ArielDataExportManager;
-import org.openmrs.module.arielreports.reporting.library.queries.ReportQueries;
-import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
-import org.openmrs.module.reporting.dataset.definition.SqlDataSetDefinition;
+import org.openmrs.module.arielreports.reporting.library.datasets.ArielReportsDataSets;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.report.ReportDesign;
@@ -18,11 +16,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetupReport extends ArielDataExportManager {
+public class SetupFaltososParaBuscaReport extends ArielDataExportManager {
 
   @Override
   public String getExcelDesignUuid() {
-    return "b69d36ae-e9d8-11e9-aba8-7f11132c9956";
+    return "dd569594-731a-11ea-a38d-6bdc2e14c976";
   }
 
   @Override
@@ -39,12 +37,12 @@ public class SetupReport extends ArielDataExportManager {
       reportDesign =
           createXlsReportDesign(
               reportDefinition,
-              "ListaGravidasSemDataParto.xls",
-              "GRÁVIDAS SEM DATA DE PARTO",
+              "ListaFaltososParaBusca.xls",
+              "FALTOSOS PARA BUSCA",
               getExcelDesignUuid(),
               null);
       Properties props = new Properties();
-      props.put("repeatingSections", "sheet:1,row:8,dataset:GRAVIDAS");
+      props.put("repeatingSections", "sheet:1,row:8,dataset:FALTOSOS");
       props.put("sortWeight", "5000");
       reportDesign.setProperties(props);
     } catch (IOException e) {
@@ -55,17 +53,17 @@ public class SetupReport extends ArielDataExportManager {
 
   @Override
   public String getUuid() {
-    return "dc98f7c6-e9d8-11e9-a398-dfe515d7157b";
+    return "e68218b4-731a-11ea-9345-57df71f189f2";
   }
 
   @Override
   public String getName() {
-    return "ARIEL - LISTA DE GRÁVIDAS COM MAIS DE 9 MESES QUE NÃO TEM DATA DE PARTO";
+    return "ARIEL - LISTA DE PACIENTES FALTOSOS PARA BUSCA (MASTER CARD)";
   }
 
   @Override
   public String getDescription() {
-    return "São pacientes registadas como grávidas há mais de 9 meses e que não têm data de parto registada";
+    return "São pacientes que são faltosos ao levantamento de ARV";
   }
 
   @Override
@@ -75,19 +73,10 @@ public class SetupReport extends ArielDataExportManager {
     rd.setName(getName());
     rd.setDescription(getDescription());
     rd.setParameters(getParameters());
-    rd.addDataSetDefinition("GRAVIDAS", Mapped.mapStraightThrough(dataSetDefinition()));
+    rd.addDataSetDefinition(
+        "FALTOSOS",
+        Mapped.mapStraightThrough(ArielReportsDataSets.getFaltosParaBuscaDataSet(getParameters())));
     return rd;
-  }
-
-  private DataSetDefinition dataSetDefinition() {
-
-    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
-
-    dsd.setName("G");
-    dsd.setParameters(getParameters());
-    dsd.setSqlQuery(ReportQueries.GRAVIDAS);
-
-    return dsd;
   }
 
   @Override
@@ -98,8 +87,7 @@ public class SetupReport extends ArielDataExportManager {
   @Override
   public List<Parameter> getParameters() {
     return Arrays.asList(
-        new Parameter("startDate", "Start Date", Date.class),
-        new Parameter("endDate", "End Date", Date.class),
-        new Parameter("location", "Location", Location.class));
+        new Parameter("endDate", "Data Final", Date.class),
+        new Parameter("location", "Unidade Sanitária", Location.class));
   }
 }
