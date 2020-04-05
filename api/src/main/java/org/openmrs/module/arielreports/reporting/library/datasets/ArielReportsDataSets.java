@@ -239,4 +239,15 @@ public class ArielReportsDataSets {
 
     return dsd;
   }
+
+  public static DataSetDefinition getPacientesVGBDataSet(List<Parameter> parameters) {
+
+    SqlDataSetDefinition dsd = new SqlDataSetDefinition();
+
+    dsd.setName("PACIENTES VGB");
+    dsd.setParameters(parameters);
+    dsd.setSqlQuery(ReportQueries.PACIENTES_VGB);
+
+    return dsd;
+  }
 }
